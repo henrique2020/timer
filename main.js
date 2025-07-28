@@ -27,7 +27,6 @@ $('.timer input').on('change', function() {
 // Variável para armazenar o intervalo do timer
 var timerInterval = null;
 
-
 function getSeconds() {
     return parseInt($('#second').val()) 
            + 60 * parseInt($('#minute').val()) 
@@ -37,17 +36,18 @@ function getSeconds() {
 
 // Função que decrementa o tempo do timer
 function timer() {
-    let total_seconds = getSeconds()--;
-
-    $('#hour').val(Math.floor(total_seconds / 3600).toString().padStart(2, '0'));
-    $('#minute').val(Math.floor((total_seconds / 60) % 60).toString().padStart(2, '0'));
-    iSe$('#second').val((total_seconds % 60).toString().padStart(2, '0'));
+    let total_seconds = getSeconds();
+    total_seconds--;
 
     if (total_seconds == 0) {
-        clearInterval(timerInterval);
-        timerInterval = null;
-        alert('Tempo esgotado!');
-        return;
+        resetTimer();
+        setTimeout(() => {
+            alert('Tempo esgotado!');
+        }, 1);
+    } else {
+        $('#hour').val(Math.floor(total_seconds / 3600).toString().padStart(2, '0'));
+        $('#minute').val(Math.floor((total_seconds / 60) % 60).toString().padStart(2, '0'));
+        $('#second').val((total_seconds % 60).toString().padStart(2, '0'));
     }
 }
 
@@ -59,6 +59,7 @@ function startTimer() {
 function pauseTimer() {
     clearInterval(timerInterval);
     timerInterval = null;
+    $('.timer input').attr('readonly', false);
 }
 
 function resetTimer() {
