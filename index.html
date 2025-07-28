@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Temporizador</title>
+    <link rel="icon" rel="icon" href="img/clock.svg" type="image/png">
+    
+    <link rel="stylesheet" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+</head>
+<body class="dark m-0">
+    <button id="theme-selector"><img src="img/light-mode/theme-selector.svg" class="light" alt="light mode"></button>
+    <div class="timer flex">
+        <input type="text" id="hour" min="00" value="00" maxlength="2">
+        <span>:</span>
+        <input type="text" id="minute" min="00" value="00" maxlength="2">
+        <span>:</span>
+        <input type="text" id="second" min="00" value="00" maxlength="2">
+    </div>
+    <div class="buttons flex">
+        <button id="start"><img src="img/dark-mode/play.svg" alt="start"></button>
+        <button id="pause"><img src="img/dark-mode/pause.svg" alt="pause"></button>
+        <button id="stop"><img src="img/dark-mode/stop.svg" alt="stop"></button>
+    </div>
+
+    <script src="main.js" defer></script>
+</body>
+</html>
